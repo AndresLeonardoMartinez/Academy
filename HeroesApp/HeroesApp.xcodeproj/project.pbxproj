@@ -33,6 +33,7 @@
 		54C2779C222984FA00FBAA9A /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2779B222984FA00FBAA9A /* ImageViewController.swift */; };
 		54C2779E2229BEDA00FBAA9A /* CellToCarrousel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54C2779D2229BEDA00FBAA9A /* CellToCarrousel.swift */; };
 		54D8221D2240075900E20305 /* heroe.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 54D8221B2240075900E20305 /* heroe.xcdatamodeld */; };
+		54D8221F2243BA8300E20305 /* NetworkableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54D8221E2243BA8300E20305 /* NetworkableProtocol.swift */; };
 		54E5E269222FF5B2001366DA /* Comics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E5E268222FF5B2001366DA /* Comics.swift */; };
 		54E5E26B222FF995001366DA /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E5E26A222FF995001366DA /* DetailsViewController.swift */; };
 		54E5E2702230402C001366DA /* CreditsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 54E5E26F2230402C001366DA /* CreditsViewController.swift */; };
@@ -96,6 +97,7 @@
 		54C2779B222984FA00FBAA9A /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		54C2779D2229BEDA00FBAA9A /* CellToCarrousel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellToCarrousel.swift; sourceTree = "<group>"; };
 		54D8221C2240075900E20305 /* heroe.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = heroe.xcdatamodel; sourceTree = "<group>"; };
+		54D8221E2243BA8300E20305 /* NetworkableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkableProtocol.swift; sourceTree = "<group>"; };
 		54E5E268222FF5B2001366DA /* Comics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comics.swift; sourceTree = "<group>"; };
 		54E5E26A222FF995001366DA /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		54E5E26F2230402C001366DA /* CreditsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditsViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +237,7 @@
 			isa = PBXGroup;
 			children = (
 				54245F79223936A4005789CB /* Networking.swift */,
+				54D8221E2243BA8300E20305 /* NetworkableProtocol.swift */,
 			);
 			path = managers;
 			sourceTree = "<group>";
@@ -527,6 +530,7 @@
 				54245F6A223815E1005789CB /* comicsViewController.swift in Sources */,
 				54245F7E223AC18C005789CB /* WikiViewController.swift in Sources */,
 				54F597C5223FE6E30061332B /* ContextProtocol.swift in Sources */,
+				54D8221F2243BA8300E20305 /* NetworkableProtocol.swift in Sources */,
 				5404E6D522271EA3001407F1 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

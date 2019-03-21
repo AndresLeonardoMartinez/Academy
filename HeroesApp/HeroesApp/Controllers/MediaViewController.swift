@@ -12,7 +12,7 @@ import AVFoundation
 
 class MediaViewController: UIViewController {
     
-    @IBOutlet var myView : UIView!
+    @IBOutlet weak var myView : UIView!
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let path = Bundle.main.path(forResource: "videoplayback", ofType:"mp4") else {

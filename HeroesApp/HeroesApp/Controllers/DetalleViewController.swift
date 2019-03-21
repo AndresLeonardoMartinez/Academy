@@ -13,8 +13,8 @@ import NVActivityIndicatorView
 class DetalleViewController: UIViewController {
     
     var miHeroe : Heroe?
-    @IBOutlet var labelDescription : UILabel!
-    @IBOutlet var imageToShow: UIImageView!
+    @IBOutlet weak var labelDescription : UILabel!
+    @IBOutlet weak var imageToShow: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var miComicsCollection: UICollectionView!
     @IBOutlet weak var isLoading : UIActivityIndicatorView!

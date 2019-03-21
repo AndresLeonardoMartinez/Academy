@@ -10,8 +10,6 @@ import UIKit
 import SDWebImage
 import UserNotifications
 
-
-
 class RootViewController: UIViewController {
     
     @IBOutlet weak var miTable : UITableView!
@@ -23,7 +21,8 @@ class RootViewController: UIViewController {
     var isSearching = false
     var isFetchingData = false
     var heroesSearched: [Heroe]?
-    var networking: Networking?
+//    var networking: Networking?
+    var networking: Networkable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +34,6 @@ class RootViewController: UIViewController {
         self.heroes = []
         isLoading.hidesWhenStopped = true
         isLoading.startAnimating()
-        
         self.fetchData()
 
     }
@@ -106,18 +104,19 @@ extension RootViewController : UIScrollViewDelegate{
         }
     }
     func fetchData(){
-       networking?.getElements(url: "characters", toParse: ResponseHeroes.self, completion: {
-            response in
-        self.heroes?.append(contentsOf: response.data.results.filter({ (Heroe) -> Bool in
+        networking?.getElements(url: "characters", toParse: ResponseHeroes.self, limit: 50, completion: {
+            [weak self] response in
+            guard let strongSelf = self else {return}
+            strongSelf.heroes?.append(contentsOf: response.data.results.filter({ (Heroe) -> Bool in
             // filter to eliminate elements tha hasn't image
             let image = Heroe.thumbnail.path
             return !image.contains("image_not_available")
             
         }))
-            self.miTable.reloadData()
-            self.networking?.updatePagginationValues(offset: Int(response.data.offset + response.data.count), total: Int(response.data.total))
-            self.isLoading.stopAnimating()
-            self.isFetchingData = false
+            strongSelf.miTable.reloadData()
+            strongSelf.networking?.updatePagginationValues(offset: Int(response.data.offset + response.data.count), total: Int(response.data.total))
+            strongSelf.isLoading.stopAnimating()
+            strongSelf.isFetchingData = false
         })
     }
 }

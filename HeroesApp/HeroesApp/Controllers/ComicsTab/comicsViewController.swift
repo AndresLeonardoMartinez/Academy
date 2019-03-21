@@ -4,9 +4,9 @@ class comicsViewController: UIViewController {
     
     @IBOutlet weak var myCollection : UICollectionView!
     @IBOutlet weak var noConnectionLabel : UILabel!
+    @IBOutlet weak var isLoading : UIActivityIndicatorView!
 
     var comics : [Comic]?
-    @IBOutlet weak var isLoading : UIActivityIndicatorView!
     var networking : Networking?
     
     override func viewDidLoad() {
@@ -18,16 +18,17 @@ class comicsViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         self.noConnectionLabel.isHidden = Connectivity.isConnectedToInternet()
         self.networking = Networking(context: context)
-        self.networking?.getElements(url: "comics", toParse: ResponseComic.self, limit:100, completion: {
+        self.networking?.getElements(url: "comics", toParse: ResponseComic.self, limit:100, completion: { [weak self]
             response in
-            self.comics?.append(contentsOf: response.data.results.filter({ (Comic) -> Bool in
+            guard let strongSelf = self else {return}
+            strongSelf.comics?.append(contentsOf: response.data.results.filter({ (Comic) -> Bool in
                     // filter to eliminate elements tha hasn't image
                     
                 let image = Comic.thumbnail.path
                     return !image.contains("image_not_available")
             }))
-            self.myCollection.reloadData()
-            self.isLoading.stopAnimating()
+            strongSelf.myCollection.reloadData()
+            strongSelf.isLoading.stopAnimating()
         })
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

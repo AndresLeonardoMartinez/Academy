@@ -14,7 +14,7 @@ class CreatorsViewController: UIViewController {
     @IBOutlet weak var noConnectionLabel : UILabel!
 
     var creators : [Creator]?
-    var networking: Networking?
+    var networking: Networkable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,14 +22,15 @@ class CreatorsViewController: UIViewController {
         let context = appDelegate.persistentContainer.viewContext
         self.noConnectionLabel.isHidden = Connectivity.isConnectedToInternet()
         self.networking = Networking(context: context)
-        self.networking?.getElements(url: "creators", toParse: ResponseCreator.self, completion: {
+        self.networking?.getElements(url: "creators", toParse: ResponseCreator.self, limit: 50, completion: { [weak self]
             response in
-            self.creators = response.data.results.filter({ (Creator) -> Bool in
+            guard let strongSelf = self else {return}
+            strongSelf.creators = response.data.results.filter({ (Creator) -> Bool in
                 //filter to eliminate creators with empty name
                 !Creator.fullName.isEmpty
             })
             
-            self.table.reloadData()
+            strongSelf.table.reloadData()
         })
         
     }

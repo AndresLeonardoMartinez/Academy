@@ -16,12 +16,12 @@ class Connectivity {
     }
 }
 
-class Networking{
+class Networking : Networkable{
+    var context: NSManagedObjectContext
     var requestParameters:Parameters
     var offset: Int
     var total: Int
     let url: String
-    let context : NSManagedObjectContext
     
     init(context : NSManagedObjectContext){
         let publicKey = Bundle.main.object(forInfoDictionaryKey: "MarvelPublicKey") as! String
@@ -102,18 +102,6 @@ class Networking{
             print("FALLO EL DELETE :: \(error)")
         }
     }
-//    func fetch<T: NSFetchRequestResult>(context: NSManagedObjectContext, type: T.Type) -> T{
-//        let fetchRequest = NSFetchRequest<T>(entityName: String(T.type))
-//        do {
-//            let results = try context.fetch(fetchRequest)
-//            return results
-//
-//        }
-//        catch let error {
-//            print("FALLO EL FETCH :: \(error)")
-//        }
-//
-//    }
     
 
 }
