@@ -21,12 +21,14 @@ protocol Networkable{
      parameters:
      * url is the endpoint
      * toParse is the type of the element
-     * limit is optional. The default is 50. it is used for paggination issues
+     * limit is for paggination. The default is 50. it is used for paggination issues
      * completion is the callback tha have a element type parameter
      */
     func getElements<T : Decodable>(url: String, toParse: T.Type, limit: Int, completion:@escaping (_ toReturn : T)->Void) where T: EntityNameable, T: NSFetchRequestResult
-    
-}
+//    func getHeroes(completion:@escaping (_ toReturn : Heroe)->Void)
+  
+
+}//
 extension Networkable{
     /*
      update the offset
@@ -36,4 +38,5 @@ extension Networkable{
         self.total = total
         requestParameters["offset"] = String(offset)
     }
+    
 }
